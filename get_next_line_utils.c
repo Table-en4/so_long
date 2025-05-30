@@ -6,13 +6,13 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:35:19 by molapoug          #+#    #+#             */
-/*   Updated: 2025/05/30 19:17:46 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/05/30 19:28:23 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_strlen(char *s)
+int	t_strlen(char *s)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ char	*ft_strdu(char *s)
 	int		i;
 	char	*dup;
 
-	len = ft_strlen(s);
+	len = t_strlen(s);
 	i = 0;
 	dup = malloc(len + 1);
 	if (!dup)
@@ -73,8 +73,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	l1 = ft_strlen(s1);
-	l2 = ft_strlen(s2);
+	l1 = t_strlen(s1);
+	l2 = t_strlen(s2);
 	res = malloc(l1 + l2 + 1);
 	if (!res)
 		return (NULL);

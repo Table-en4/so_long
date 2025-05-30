@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:34:19 by molapoug          #+#    #+#             */
-/*   Updated: 2025/05/30 19:09:57 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/05/30 19:28:52 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*update_stash(char *str)
 	if (!str[i])
 		return (free(str), NULL);
 	i++;
-	len = ft_strlen(str + i);
+	len = t_strlen(str + i);
 	new = malloc(len + 1);
 	if (!new)
 		return (free(str), NULL);

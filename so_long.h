@@ -6,7 +6,7 @@
 /*   By: molapoug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/05/30 19:17:51 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/05/30 19:29:08 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct	s_game
 	t_img	*img;
 }		t_game;
 
-int	ft_strlen(char *str);
+int	t_strlen(char *str);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
 char	*ft_strdu(char *s);
 char	*ft_strjoin(char *s1, char *s2);
