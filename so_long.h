@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/05/31 16:08:42 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:54:10 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ typedef struct s_img
 {
 	void	*img1;
 	void	*img2;
+	void	*img3;
+	void	*img4;
+	void	*img5;
+	void	*img6;
+	void	*img7;
 	char	*player1;
 	char	*player2;
 	char	*player3;
@@ -67,5 +72,6 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
 void	display_img(t_game game);
 int	handle_input(int keysym, t_game *game);
+void	display_pos(t_game game);
 
 #endif

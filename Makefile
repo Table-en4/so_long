@@ -6,7 +6,7 @@
 #    By: molapoug <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 10:15:52 by molapoug          #+#    #+#              #
-#    Updated: 2025/05/31 15:41:37 by molapoug         ###   ########.fr        #
+#    Updated: 2025/06/03 18:09:04 by molapoug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ AR = ar rcs
 RM = rm -f
 
 SRC = so_long.c display.c get_next_line.c \
-      get_next_line_utils.c mouve.c 
+      get_next_line_utils.c mouve.c read_map.c  
 
 OBJ = $(SRC:.c=.o)
 
