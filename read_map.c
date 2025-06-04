@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:28:17 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/04 13:12:58 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/04 17:44:12 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*copy_line(char *line)
 	len = 0;
 	while (line[len] && line[len] != '\n')
 		len++;
-	copy = malloc(sizeof(char) * (len + 1));
+	copy = malloc(sizeof(char *) * (len + 1));
 	if (!copy)
 		return (NULL);
 	i = 0;
@@ -53,6 +53,16 @@ char	*copy_line(char *line)
 	}
 	copy[i] = '\0';
 	return (copy);
+}
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->y)
+		free(map->map[i++]);
+	free(map->map);
 }
 
 int	load_map(t_map *map, char *file)

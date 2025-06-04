@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/04 13:27:47 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/04 17:54:24 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 int	main()
 {
 	t_game	game;
+	t_map	*map;
 
 	game.mlx = mlx_init();
 	if (!game.mlx)
@@ -47,6 +48,7 @@ int	main()
 	game.img->pacman = NULL;
 	game.img->pacman2 = NULL;
 	game.img->fire = NULL;
+	map = NULL;
 
 	game.map = malloc(sizeof(t_map));
 	if (!game.map)
@@ -64,5 +66,7 @@ int	main()
 	mlx_key_hook(game.mlx_win, &handle_input, &game);
 	destroy_img(&game);
 	mlx_loop(game.mlx);
+	free(game.map);
+	free_map(game.map);
 	return (0);
 }

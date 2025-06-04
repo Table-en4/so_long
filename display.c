@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:33:42 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/04 13:26:17 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:22:57 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	assets_img(t_game *game)
 	game->img->width = 30;
 	game->img->height = 30;
 	game->img->player1 = "assets/wall.xpm";
-	game->img->player2 = "assets/player2.xpm";
+	game->img->player2 = "assets/bg.xpm";
 	game->img->player3 = "assets/player3.xpm";
 	game->img->wall = "assets/fire_ball.xpm";
-	game->img->fire = "assets/fire_ball.xpm";
+	game->img->fire = "assets/player1.xpm";
 
 	game->img->img1 = mlx_xpm_file_to_image(game->mlx, game->img->player1,
 			&width, &height);
