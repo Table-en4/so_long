@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/03 17:54:10 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/04 13:06:57 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_img
 	char	*wall;
 	char	*pacman;
 	char	*pacman2;
+	char	*fire;
 	char	*bg;
 	int		height;
 	int		width;
@@ -70,8 +71,10 @@ size_t	ft_strlcpy(char *dst, char *src, size_t size);
 char	*ft_strdu(char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
-void	display_img(t_game game);
+void	display_img(t_game *game);
 int	handle_input(int keysym, t_game *game);
 void	display_pos(t_game game);
-
+void	assets_img(t_game *game);
+int	load_map(t_map *map, char *file);
+void	destroy_img(t_game *game);
 #endif

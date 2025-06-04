@@ -6,41 +6,59 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:33:42 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/03 17:25:27 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/04 13:26:17 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	assets_img(t_game game)
+void	assets_img(t_game *game)
 {
 	int	width = 30;
 	int	height = 30;
 
-	game.img->player1 = "assets/player1.xpm";
-	game.img->player2 = "assets/player2.xpm";
-	game.img->player3 = "assets/player3.xpm";
-	game.img->wall = "assets/wall.xpm";
-	game.img->img1 = mlx_xpm_file_to_image(game.mlx, game.img->player1,
+	game->img->width = 30;
+	game->img->height = 30;
+	game->img->player1 = "assets/wall.xpm";
+	game->img->player2 = "assets/player2.xpm";
+	game->img->player3 = "assets/player3.xpm";
+	game->img->wall = "assets/fire_ball.xpm";
+	game->img->fire = "assets/fire_ball.xpm";
+
+	game->img->img1 = mlx_xpm_file_to_image(game->mlx, game->img->player1,
 			&width, &height);
-	game.img->img2 = mlx_xpm_file_to_image(game.mlx, game.img->player2,
+	game->img->img2 = mlx_xpm_file_to_image(game->mlx, game->img->player2,
 			&width, &height);
-	game.img->img3 = mlx_xpm_file_to_image(game.mlx, game.img->player3,
+	game->img->img3 = mlx_xpm_file_to_image(game->mlx, game->img->player3,
 			&width, &height);
-	game.img->img4 = mlx_xpm_file_to_image(game.mlx, game.img->wall,
+	game->img->img4 = mlx_xpm_file_to_image(game->mlx, game->img->wall,
+			&width, &height);
+	game->img->img5 = mlx_xpm_file_to_image(game->mlx, game->img->fire,
 			&width, &height);
 
+	if (!game->img->img1 || !game->img->img2 || !game->img->img3 ||
+		!game->img->img4 || !game->img->img5)
+	{
+		printf("Erreur: Impossible de charger une ou plusieurs images\n");
+	}
 }
 
-void	destroy_img(t_game game)
+void	destroy_img(t_game *game)
 {
-	mlx_destroy_image(game.mlx, game.img->img1);
-	mlx_destroy_image(game.mlx, game.img->img2);
-	mlx_destroy_image(game.mlx, game.img->img3);
-	mlx_destroy_image(game.mlx, game.img->img4);
+	if (game->img->img1)
+		mlx_destroy_image(game->mlx, game->img->img1);
+	if (game->img->img2)
+		mlx_destroy_image(game->mlx, game->img->img2);
+	if (game->img->img3)
+		mlx_destroy_image(game->mlx, game->img->img3);
+	if (game->img->img4)
+		mlx_destroy_image(game->mlx, game->img->img4);
+	if (game->img->img5)
+		mlx_destroy_image(game->mlx, game->img->img5);
 }
 
-void	display_img(t_game game)
+
+/*void	display_img(t_game game)
 {
 	int	width;
 	int	height;
@@ -62,4 +80,4 @@ void	display_img(t_game game)
 	mlx_put_image_to_window(game.mlx, game.mlx_win, game.img->img3, 100, 75);
 	mlx_put_image_to_window(game.mlx, game.mlx_win, game.img->img4, 0, 0);
 	destroy_img(game);
-}
+}*/

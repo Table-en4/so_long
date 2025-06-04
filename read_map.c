@@ -6,88 +6,80 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:28:17 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/03 18:13:30 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/04 13:12:58 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	len_y(char **map)
+int	get_map_height(char *file)
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
-
-void	elements_pos(t_game *pos)
-{
-	t_map	*map;
-
-	map = NULL;
-	map->c = 0;
-	map->p = 0;
-	map->e = 0;
-	map->y = len_y(pos->map->map) - 1;
-	while (map->y--)
-	{
-		map->x = 0;
-		while (pos->map->map[map->y][map->x] != '\0')
-		{
-			if (pos->map->map[map->y][map->x] == 'C')
-				map->c++;
-			else if (pos->map->map[map->y][map->x] == 'P')
-			{
-				display_img(*pos);
-			}
-			//	map.p++;
-			else if (pos->map->map[map->y][map->x] == 'E')
-				map->e++;
-			map->x++;
-		}
-	}
-	if (map->c == 0 || map->p == 0 || map->p == 0)
-		perror("Map error\n");
-}
-
-char	**get_map(char *map)
-{
-	char	*line;
-	char	*lines;
 	int		fd;
+	int		height;
+	char	*line;
 
-	map = "maps/map.ber";
-	line = "";
-	lines = ft_strdu("");
-	fd = open(map, 'r');
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		perror("Can't open file\n");
+		return (0);
+	height = 0;
+	line = get_next_line(fd);
 	while (line)
 	{
-		line = get_next_line(fd);
-		if (line == NULL || line[0] == '\n')
-			break ;
-		lines = ft_strjoin(lines, line);
 		free(line);
+		line = get_next_line(fd);
+		height++;
 	}
-	free(line);
 	close(fd);
-	if (lines[0] == '\0')
-		perror("Bad map\n");
-	return (ft_split(lines, '\n'));
+	return (height);
 }
 
-void	display_pos(t_game game)
+char	*copy_line(char *line)
 {
-	int	i;
+	char	*copy;
+	int		len;
+	int		i;
 
+	len = 0;
+	while (line[len] && line[len] != '\n')
+		len++;
+	copy = malloc(sizeof(char) * (len + 1));
+	if (!copy)
+		return (NULL);
 	i = 0;
-	while (game.map->map[i])
+	while (i < len)
 	{
-		get_map(*game.map->map);
-		printf("%d\n", i);
+		copy[i] = line[i];
 		i++;
 	}
+	copy[i] = '\0';
+	return (copy);
 }
+
+int	load_map(t_map *map, char *file)
+{
+	int		fd;
+	int		i;
+	char	*line;
+
+	map->y = get_map_height(file);
+	map->map = malloc(sizeof(char *) * (map->y + 1));
+	if (!map->map)
+		return (1);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	i = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		map->map[i] = copy_line(line);
+		free(line);
+		line = get_next_line(fd);
+		i++;
+	}
+	map->map[i] = NULL;
+	map->x = t_strlen(map->map[0]);
+	close(fd);
+	return (0);
+}
+
