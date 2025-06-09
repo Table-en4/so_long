@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/04 19:05:49 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:07:46 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ void	assets_img(t_game *game);
 int	load_map(t_map *map, char *file);
 void	destroy_img(t_game *game);
 void	free_map(t_map *map);
+void put_img_to_win(t_game *game, void *img, t_map *pos);
+int	free_all(t_game *game);
 
 #endif

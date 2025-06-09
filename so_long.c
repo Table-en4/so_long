@@ -6,67 +6,85 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/04 17:54:24 by molapoug         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/04 11:58:24 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:47:25 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main()
+void	init_game_struct(t_game *game)
+{
+	game->mlx = NULL;
+	game->mlx_win = NULL;
+	game->img = NULL;
+	game->map = NULL;
+}
+
+void	init_img_struct(t_img *img)
+{
+	img->img1 = NULL;
+	img->img2 = NULL;
+	img->img3 = NULL;
+	img->img4 = NULL;
+	img->img5 = NULL;
+	img->player1 = NULL;
+	img->player2 = NULL;
+	img->player3 = NULL;
+	img->wall = NULL;
+	img->pacman = NULL;
+	img->pacman2 = NULL;
+	img->fire = NULL;
+	img->width = 30;
+	img->height = 30;
+}
+
+int	cleanup_and_exit(t_game *game, int exit_code)
+{
+	if (game->img)
+	{
+		destroy_img(game);
+		free(game->img);
+	}
+	if (game->map)
+	{
+		free_map(game->map);
+		free(game->map);
+	}
+	if (game->mlx_win)
+		mlx_destroy_window(game->mlx, game->mlx_win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+	return (exit_code);
+}
+
+int	main(void)
 {
 	t_game	game;
-	t_map	*map;
 
+	init_game_struct(&game);
 	game.mlx = mlx_init();
 	if (!game.mlx)
 		return (1);
 	game.img = malloc(sizeof(t_img));
 	if (!game.img)
-		return (1);
-
-	game.img->img1 = NULL;
-	game.img->img2 = NULL;
-	game.img->img3 = NULL;
-	game.img->img4 = NULL;
-	game.img->img5 = NULL;
-	game.img->player1 = NULL;
-	game.img->player2 = NULL;
-	game.img->player3 = NULL;
-	game.img->wall = NULL;
-	game.img->pacman = NULL;
-	game.img->pacman2 = NULL;
-	game.img->fire = NULL;
-	map = NULL;
-
+		return (cleanup_and_exit(&game, 1));
+	init_img_struct(game.img);
 	game.map = malloc(sizeof(t_map));
 	if (!game.map)
-		return (1);
-
+		return (cleanup_and_exit(&game, 1));
 	if (load_map(game.map, "maps/map.ber") != 0)
-		return (1);
-
-	game.mlx_win = mlx_new_window(game.mlx, 400, 160, "Plisse les yeux");
+		return (cleanup_and_exit(&game, 1));
+	game.mlx_win = mlx_new_window(game.mlx, game.map->x * 30, game.map->y * 30,
+		"Plisse les yeux");
 	if (!game.mlx_win)
-		return (free(game.img), 1);
-
+		return (cleanup_and_exit(&game, 1));
 	assets_img(&game);
 	display_img(&game);
+	mlx_hook(game.mlx_win, 17, 0, &free_all, &game);
 	mlx_key_hook(game.mlx_win, &handle_input, &game);
-	destroy_img(&game);
 	mlx_loop(game.mlx);
-	free(game.map);
-	free_map(game.map);
 	return (0);
 }
