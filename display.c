@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:33:42 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/04 15:22:57 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:58:10 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,26 @@ void	assets_img(t_game *game)
 
 	game->img->width = 30;
 	game->img->height = 30;
-	game->img->player1 = "assets/wall.xpm";
+	game->img->player1 = "assets/player1.xpm";
 	game->img->player2 = "assets/bg.xpm";
-	game->img->player3 = "assets/player3.xpm";
-	game->img->wall = "assets/fire_ball.xpm";
-	game->img->fire = "assets/player1.xpm";
+	game->img->wall = "assets/wall.xpm";
+	game->img->collectibles = "assets/col.xpm";
+	game->img->fire = "assets/door.xpm";
 
 	game->img->img1 = mlx_xpm_file_to_image(game->mlx, game->img->player1,
 			&width, &height);
 	game->img->img2 = mlx_xpm_file_to_image(game->mlx, game->img->player2,
 			&width, &height);
-	game->img->img3 = mlx_xpm_file_to_image(game->mlx, game->img->player3,
+	game->img->img3 = mlx_xpm_file_to_image(game->mlx, game->img->wall,
 			&width, &height);
-	game->img->img4 = mlx_xpm_file_to_image(game->mlx, game->img->wall,
+	game->img->img4 = mlx_xpm_file_to_image(game->mlx, game->img->collectibles,
 			&width, &height);
 	game->img->img5 = mlx_xpm_file_to_image(game->mlx, game->img->fire,
 			&width, &height);
 
 	if (!game->img->img1 || !game->img->img2 || !game->img->img3 ||
 		!game->img->img4 || !game->img->img5)
-	{
 		printf("Erreur: Impossible de charger une ou plusieurs images\n");
-	}
 }
 
 void	destroy_img(t_game *game)
@@ -56,7 +54,6 @@ void	destroy_img(t_game *game)
 	if (game->img->img5)
 		mlx_destroy_image(game->mlx, game->img->img5);
 }
-
 
 /*void	display_img(t_game game)
 {

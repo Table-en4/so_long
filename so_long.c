@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/09 18:47:25 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:09:41 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(void)
 	display_img(&game);
 	mlx_hook(game.mlx_win, 17, 0, &free_all, &game);
 	mlx_key_hook(game.mlx_win, &handle_input, &game);
+	exit_game(&game);
 	mlx_loop(game.mlx);
 	return (0);
 }

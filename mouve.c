@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:50:08 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/09 18:13:48 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:42:34 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ void	move_player(t_game *game, int new_x, int new_y)
 		return ;
 	if (game->map->map[new_y][new_x] == '1')
 		return ;
+	if (game->map->map[new_y][new_x] == 'E')
+	{
+		printf("you win !!!\n");
+		free_all(game);
+		exit(0);
+	}
 	game->map->map[old_y][old_x] = '0';
 	game->map->map[new_y][new_x] = 'P';
 	mlx_clear_window(game->mlx, game->mlx_win);
@@ -100,7 +106,9 @@ int	handle_input(int keysym, t_game *game)
 {
 	int	x;
 	int	y;
+	int	i;
 
+	i = 0;
 	if (!game)
 		return (0);
 	if (!find_player(game, &x, &y))

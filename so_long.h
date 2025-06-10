@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/09 18:07:46 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:56:03 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_img
 	void	*img5;
 	void	*img6;
 	void	*img7;
+	void	*img8;
 	char	*player1;
 	char	*player2;
 	char	*player3;
@@ -43,6 +44,7 @@ typedef struct s_img
 	char	*pacman2;
 	char	*fire;
 	char	*bg;
+	char	*collectibles;
 	int		height;
 	int		width;
 }		t_img;
@@ -78,7 +80,8 @@ void	assets_img(t_game *game);
 int	load_map(t_map *map, char *file);
 void	destroy_img(t_game *game);
 void	free_map(t_map *map);
-void put_img_to_win(t_game *game, void *img, t_map *pos);
+void	put_img_to_win(t_game *game, void *img, t_map *pos);
 int	free_all(t_game *game);
-
+void	exit_game(t_game *game);
+int	find_player(t_game *game, int *x, int *y);
 #endif
