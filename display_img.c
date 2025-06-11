@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:25:38 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/10 16:17:05 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/11 20:40:59 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	display_img(t_game *game)
 				put_img_to_win(game, game->img->img4, &pos);
 			else if (tile == 'E')
 				put_img_to_win(game, game->img->img5, &pos);
+			else if (tile == 'N')
+				put_img_to_win(game, game->img->img6, &pos);
 			pos.x++;
 		}
 		pos.y++;

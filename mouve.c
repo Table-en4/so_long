@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:50:08 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/10 17:50:04 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/11 20:18:11 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,31 @@ int	find_player(t_game *game, int *x, int *y)
 	return (0);
 }
 
-int	move_player(t_game *game, int new_x, int new_y)
+int	move_player(t_game *g, int new_x, int new_y)
 {
 	int	old_x;
 	int	old_y;
 
-	if (!game || !game->map || !game->map->map)
+	if (!g || !g->map || !g->map->map)
 		return (0);
-	if (!find_player(game, &old_x, &old_y))
+	if (!find_player(g, &old_x, &old_y))
 		return (0);
-	if (new_x < 0 || new_y < 0 || new_x >= game->map->x || new_y >= game->map->y)
+	if (new_x < 0 || new_y < 0 || new_x >= g->map->x || new_y >= g->map->y)
 		return (0);
-	if (!game->map->map[new_y] || !game->map->map[new_y][new_x])
+	if (!g->map->map[new_y] || !g->map->map[new_y][new_x])
 		return (0);
-	if (game->map->map[new_y][new_x] == '1')
+	if (g->map->map[new_y][new_x] == '1')
 		return (0);
-	if (game->map->map[new_y][new_x] == 'E')
+	if (g->map->map[new_y][new_x] == 'E')
 	{
 		printf("you win !!!\n");
-		free_all(game);
+		free_all(g);
 		exit(0);
 	}
-	game->map->map[old_y][old_x] = '0';
-	game->map->map[new_y][new_x] = 'P';
-	mlx_clear_window(game->mlx, game->mlx_win);
-	return (display_img(game), 0);
+	g->map->map[old_y][old_x] = '0';
+	g->map->map[new_y][new_x] = 'P';
+	mlx_clear_window(g->mlx, g->mlx_win);
+	return (display_img(g), 0);
 }
 
 int	free_all(t_game *game)

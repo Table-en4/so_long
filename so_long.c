@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/10 17:38:46 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/11 20:24:57 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,18 @@ int	cleanup_and_exit(t_game *game, int exit_code)
 	return (exit_code);
 }
 
+int	validate_map(t_game *game)
+{
+	if (!is_valid(game))
+	{
+		printf("Error\nbad map: ");
+		printf("there is not C or E\n");
+		printf("or bad map path to C or E\n");
+		return (0);
+	}
+	return (1);
+}
+
 int	main(void)
 {
 	t_game	game;
@@ -77,8 +89,10 @@ int	main(void)
 		return (cleanup_and_exit(&game, 1));
 	if (load_map(game.map, "maps/map.ber") != 0)
 		return (cleanup_and_exit(&game, 1));
+	if (!validate_map(&game))
+		return (cleanup_and_exit(&game, 1));
 	game.mlx_win = mlx_new_window(game.mlx, game.map->x * 30, game.map->y * 30,
-		"Plisse les yeux");
+		"Plisse les yeux ou jtegoume");
 	if (!game.mlx_win)
 		return (cleanup_and_exit(&game, 1));
 	assets_img(&game);
