@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:33:42 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/11 20:40:09 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/12 16:15:55 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	assets_img(t_game *game)
 
 	game->img->width = 30;
 	game->img->height = 30;
-	game->img->player1 = "assets/midiagne.xpm";
+	game->img->player1 = "assets/player1.xpm";
 	game->img->player2 = "assets/bg.xpm";
 	game->img->wall = "assets/wall.xpm";
 	game->img->collectibles = "assets/col.xpm";
 	game->img->fire = "assets/door.xpm";
-	game->img->player3 = "assets/doaamabr.xpm";
+	game->img->player3 = "assets/pacman2.xpm";
 
 	game->img->img1 = mlx_xpm_file_to_image(game->mlx, game->img->player1,
 			&width, &height);
@@ -56,6 +56,8 @@ void	destroy_img(t_game *game)
 		mlx_destroy_image(game->mlx, game->img->img4);
 	if (game->img->img5)
 		mlx_destroy_image(game->mlx, game->img->img5);
+	if (game->img->img6)
+		mlx_destroy_image(game->mlx, game->img->img6);
 }
 
 /*void	display_img(t_game game)

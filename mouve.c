@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:50:08 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/11 20:18:11 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:42:51 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,15 @@ int	move_player(t_game *g, int new_x, int new_y)
 		return (0);
 	if (g->map->map[new_y][new_x] == '1')
 		return (0);
-	if (g->map->map[new_y][new_x] == 'E')
+	if (g->map->map[new_y][new_x] == 'E' && is_door_valid(g) == 1)
 	{
 		printf("you win !!!\n");
+		free_all(g);
+		exit(0);
+	}
+	if (g->map->map[new_y][new_x] == 'N')
+	{
+		printf("You loose !!!\nYou got eated !!!\n");
 		free_all(g);
 		exit(0);
 	}

@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 10:25:38 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/11 20:40:59 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/12 16:48:02 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,29 @@ void	display_img(t_game *game)
 		pos.y++;
 	}
 }
+/*
+int	count_elements(t_game *game)
+{
+	int	i;
+	char	tile;
+	t_map	pos;
+	
+	i = 0;
+	pos.y = 0;
+	while (game->map->map[pos.y])
+	{
+		pos.x = 0;
+		while (game->map->map[pos.x])
+		{
+			tile = game->map->map[pos.y][pos.x];
+			if (tile == 'C')
+				i++;
+			pos.x++;
+		}
+		pos.y++;
+	}
+	return (i);
+}*/
 
 void	exit_game(t_game *game)
 {
@@ -58,7 +81,6 @@ void	exit_game(t_game *game)
 		if (game->map->map[player_y][player_x] == 'E')
 		{
 			free_all(game);
-			printf("j ai marche sur le collectible\n");
 			exit(0);
 		}
 	}

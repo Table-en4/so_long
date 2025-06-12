@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/11 20:24:57 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:32:53 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	main(void)
 	display_img(&game);
 	mlx_hook(game.mlx_win, 17, 0, &free_all, &game);
 	mlx_key_hook(game.mlx_win, &handle_input, &game);
+	printf("nombre de collectibles ; %d\n", count_elements(&game));
 	exit_game(&game);
 	mlx_loop(game.mlx);
 	return (0);

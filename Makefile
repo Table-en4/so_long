@@ -6,7 +6,7 @@
 #    By: molapoug <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 10:15:52 by molapoug          #+#    #+#              #
-#    Updated: 2025/06/11 19:12:24 by molapoug         ###   ########.fr        #
+#    Updated: 2025/06/12 17:43:24 by molapoug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ RM = rm -f
 
 SRC = so_long.c display.c get_next_line.c \
       get_next_line_utils.c mouve.c read_map.c \
-      display_img.c flodd_fill.c 
+      display_img.c flodd_fill.c check_door.c
 
 OBJ = $(SRC:.c=.o)
 

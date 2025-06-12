@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/11 19:53:44 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:42:14 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ void	exit_game(t_game *game);
 int	find_player(t_game *game, int *x, int *y);
 int	is_valid(t_game *game);
 void	flood_fill(char **map, int x, int y);
+int	count_elements(t_game *game);
+int	is_door_valid(t_game *game);
 
 #endif

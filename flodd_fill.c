@@ -6,7 +6,7 @@
 /*   By: molapoug <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 20:14:05 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/11 20:28:14 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:34:46 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,27 @@ int	is_valid(t_game *game)
 		i++;
 	}
 	return (free_copy(copy, game->map->y), 1);
+}
+
+int	count_elements(t_game *game)
+{
+	int	i;
+	int	k;
+	int	j;
+
+	i = 0;
+	k = 0;
+	flood_fill(game->map->map, game->map->x, game->map->y);
+	while (i < game->map->y)
+	{
+		j = 0;
+		while (game->map->map[i][j])
+		{
+			if (game->map->map[i][j] == 'C')
+				k++;
+			j++;
+		}
+		i++;
+	}
+	return (k);
 }
