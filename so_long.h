@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 16:02:20 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:54:58 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ typedef struct s_img
 	int		height;
 	int		width;
 }		t_img;
+
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
 
 typedef struct s_map
 {
@@ -94,5 +100,7 @@ int	is_door_valid(t_game *game);
 int	find_exit(t_game *game);
 int	fl_line(t_game *game);
 void	calc_map_dimensions(t_map *map);
+void	display_move_counter(t_game *game, int moves);
+int	handle_exit_move(t_game *g);
 
 #endif

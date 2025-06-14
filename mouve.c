@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:50:08 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 17:33:23 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:55:37 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,49 +48,33 @@ int	find_player(t_game *game, int *x, int *y)
 	return (0);
 }
 
-int	handle_exit_move(t_game *g)
-{
-	if (is_door_valid(g) == 1)
-	{
-		printf("you win !!!\n");
-		free_all(g);
-		exit(0);
-	}
-	else
-	{
-		printf("get all collectibles before exit\n");
-		g->player_exit = 1;
-		return (1);
-	}
-}
-
-int	update_player_position(t_game *g, int old_x, int old_y, int new_x, int new_y)
+int	update_player_position(t_game *g, t_pos old, t_pos new)
 {
 	if (g->player_exit)
 	{
-		g->map->map[old_y][old_x] = 'E';
+		g->map->map[old.y][old.x] = 'E';
 		g->player_exit = 0;
 	}
 	else
-		g->map->map[old_y][old_x] = '0';
-
-	if (g->map->map[new_y][new_x] == 'E')
+		g->map->map[old.y][old.x] = '0';
+	if (g->map->map[new.y][new.x] == 'E')
 		return (handle_exit_move(g));
-	else
-		g->map->map[new_y][new_x] = 'P';
+	g->map->map[new.y][new.x] = 'P';
 	return (0);
 }
 
+
 int	move_player(t_game *g, int new_x, int new_y)
 {
-	int	old_x;
-	int	old_y;
+	t_pos	old;
+	t_pos	new;
 
 	if (!g || !g->map || !g->map->map)
 		return (0);
-	if (!find_player(g, &old_x, &old_y))
+	if (!find_player(g, &old.x, &old.y))
 		return (0);
-	if (new_x < 0 || new_y < 0 || new_x >= g->map->x || new_y >= g->map->y)
+	if (new_x < 0 || new_y < 0
+		|| new_x >= g->map->x || new_y >= g->map->y)
 		return (0);
 	if (!g->map->map[new_y] || !g->map->map[new_y][new_x])
 		return (0);
@@ -98,61 +82,15 @@ int	move_player(t_game *g, int new_x, int new_y)
 		return (0);
 	if (g->map->map[new_y][new_x] == 'N')
 	{
-		printf("You loose !!!\nYou got eated !!!\n");
+		printf("You lose !!!\nYou got eaten !!!\n");
 		free_all(g);
 		exit(0);
 	}
-	update_player_position(g, old_x, old_y, new_x, new_y);
+	new.x = new_x;
+	new.y = new_y;
+	update_player_position(g, old, new);
 	mlx_clear_window(g->mlx, g->mlx_win);
-	display_img(g);
-	return (1);
-}
-
-int	free_all(t_game *game)
-{
-	if (!game)
-		return (1);
-	if (game->img)
-	{
-		destroy_img(game);
-		free(game->img);
-	}
-	if (game->map)
-	{
-		free_map(game->map);
-		free(game->map);
-	}
-	if (game->mlx_win)
-		mlx_destroy_window(game->mlx, game->mlx_win);
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-	}
-	exit(0);
-	return (1);
-}
-
-void	display_move_counter(t_game *game, int moves)
-{
-	char	*move_count;
-	char	*move_str;
-
-	if (!game || !game->mlx || !game->mlx_win)
-		return ;
-	move_count = ft_itoa(moves);
-	if (!move_count)
-		return ;
-	move_str = ft_strjoin("Moves: ", move_count);
-	if (!move_str)
-	{
-		free(move_count);
-		return ;
-	}
-	mlx_string_put(game->mlx, game->mlx_win, 10, 20, 0x000000, move_str);
-	printf("%s\n", move_str);
-	free(move_count);
-	free(move_str);
+	return (display_img(g), 1);
 }
 
 int	handle_input(int keysym, t_game *game)
