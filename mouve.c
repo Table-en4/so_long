@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:50:08 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 17:55:37 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:57:17 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	update_player_position(t_game *g, t_pos old, t_pos new)
 	g->map->map[new.y][new.x] = 'P';
 	return (0);
 }
-
 
 int	move_player(t_game *g, int new_x, int new_y)
 {

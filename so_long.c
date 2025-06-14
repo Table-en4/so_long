@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 17:15:25 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:03:00 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,27 +79,9 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (printf("Error\n"), 1);
-	init_game_struct(&game);
-	game.mlx = mlx_init();
-	if (!game.mlx)
-		return (1);
-	game.img = malloc(sizeof(t_img));
-	if (!game.img)
-		return (cleanup_and_exit(&game, 1));
-	init_img_struct(game.img);
-	game.map = malloc(sizeof(t_map));
-	if (!game.map)
-		return (cleanup_and_exit(&game, 1));
-	if (load_map(game.map, av[1]) != 0)
-		return (cleanup_and_exit(&game, 1));
-	if (!find_exit(&game))
-		return (cleanup_and_exit(&game, 1));
-	if (!validate_map(&game))
-		return (cleanup_and_exit(&game, 1));
-	if (!(fl_line(&game) == 0))
-		return (printf("Error\n"), 1);
+	init_game(game, av);
 	game.mlx_win = mlx_new_window(game.mlx, game.map->x * 30, game.map->y * 30,
-		"Plisse les yeux ou jtegoume");
+			"Plisse les yeux ou jtegoume");
 	if (!game.mlx_win)
 		return (cleanup_and_exit(&game, 1));
 	assets_img(&game);
