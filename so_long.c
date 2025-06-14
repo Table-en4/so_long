@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 18:03:00 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:09:41 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	validate_map(t_game *game)
 {
 	if (!is_valid(game))
 	{
-		printf("Error\n");
+		printf("Error\nbad map: ");
 		return (0);
 	}
 	return (1);
@@ -77,11 +77,12 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
-	if (ac != 2)
-		return (printf("Error\n"), 1);
-	init_game(game, av);
-	game.mlx_win = mlx_new_window(game.mlx, game.map->x * 30, game.map->y * 30,
-			"Plisse les yeux ou jtegoume");
+	if (check_args_and_init(ac, &game) != 0)
+		return (1);
+	if (check_map_validity(&game, av[1]) != 0)
+		return (1);
+	game.mlx_win = mlx_new_window(game.mlx, game.map->x * 30,
+			game.map->y * 30, "Plisse les yeux ou jtegoume");
 	if (!game.mlx_win)
 		return (cleanup_and_exit(&game, 1));
 	assets_img(&game);

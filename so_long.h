@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 18:00:43 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:09:21 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,11 @@ int		fl_line(t_game *game);
 void	calc_map_dimensions(t_map *map);
 void	display_move_counter(t_game *game, int moves);
 int		handle_exit_move(t_game *g);
-int		init_game(t_game game, char **av);
+int		check_args_and_init(int ac, t_game *game);
+int		check_map_validity(t_game *game, char *file);
+int		cleanup_and_exit(t_game *game, int exit_code);
+void	init_game_struct(t_game *game);
+void	init_img_struct(t_img *img);
+int		validate_map(t_game *game);
 
 #endif

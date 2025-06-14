@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:46:50 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 18:02:38 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:09:48 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,25 +75,39 @@ int	handle_exit_move(t_game *g)
 	}
 }
 
-int	init_game(t_game game, char **av)
+int	check_args_and_init(int ac, t_game *game)
 {
-	init_game_struct(&game);
-	game.mlx = mlx_init();
-	if (!game.mlx)
+	if (ac != 2)
+	{
+		printf("put map\n");
 		return (1);
-	game.img = malloc(sizeof(t_img));
-	if (!game.img)
-		return (cleanup_and_exit(&game, 1));
-	init_img_struct(game.img);
-	game.map = malloc(sizeof(t_map));
-	if (!game.map)
-		return (cleanup_and_exit(&game, 1));
-	if (load_map(game.map, av[1]) != 0)
-		return (cleanup_and_exit(&game, 1));
-	if (!find_exit(&game))
-		return (cleanup_and_exit(&game, 1));
-	if (!validate_map(&game))
-		return (cleanup_and_exit(&game, 1));
-	if (!(fl_line(&game) == 0))
-		return (printf("Error\n"), 1);
+	}
+	init_game_struct(game);
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (1);
+	game->img = malloc(sizeof(t_img));
+	if (!game->img)
+		return (cleanup_and_exit(game, 1));
+	init_img_struct(game->img);
+	game->map = malloc(sizeof(t_map));
+	if (!game->map)
+		return (cleanup_and_exit(game, 1));
+	return (0);
+}
+
+int	check_map_validity(t_game *game, char *file)
+{
+	if (load_map(game->map, file) != 0)
+		return (cleanup_and_exit(game, 1));
+	if (!find_exit(game))
+		return (cleanup_and_exit(game, 1));
+	if (!validate_map(game))
+		return (cleanup_and_exit(game, 1));
+	if (fl_line(game) != 0)
+	{
+		printf("bad border map bro\n");
+		return (1);
+	}
+	return (0);
 }
