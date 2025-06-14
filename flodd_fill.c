@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flodd_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molapoug <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 20:14:05 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/12 17:34:46 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:28:36 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	flood_fill(char **map, int x, int y)
 char	**copy_map(t_map *map)
 {
 	char	**copy;
-	int	i;
+	int		i;
 
 	copy = malloc(sizeof(char *) * (map->y + 1));
 	if (!copy)
@@ -68,10 +68,10 @@ void	free_copy(char **map, int height)
 int	is_valid(t_game *game)
 {
 	char	**copy;
-	int	x;
-	int	y;
-	int	i;
-	int	j;
+	int		x;
+	int		y;
+	int		i;
+	int		j;
 
 	if (!find_player(game, &x, &y))
 		return (0);

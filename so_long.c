@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/12 17:32:53 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:15:25 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	init_game_struct(t_game *game)
 	game->mlx_win = NULL;
 	game->img = NULL;
 	game->map = NULL;
+	game->player_exit = 0;
+	game->exit_x = -1;
+	game->exit_y = -1;
 }
 
 void	init_img_struct(t_img *img)
@@ -64,18 +67,18 @@ int	validate_map(t_game *game)
 {
 	if (!is_valid(game))
 	{
-		printf("Error\nbad map: ");
-		printf("there is not C or E\n");
-		printf("or bad map path to C or E\n");
+		printf("Error\n");
 		return (0);
 	}
 	return (1);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_game	game;
 
+	if (ac != 2)
+		return (printf("Error\n"), 1);
 	init_game_struct(&game);
 	game.mlx = mlx_init();
 	if (!game.mlx)
@@ -87,10 +90,14 @@ int	main(void)
 	game.map = malloc(sizeof(t_map));
 	if (!game.map)
 		return (cleanup_and_exit(&game, 1));
-	if (load_map(game.map, "maps/map.ber") != 0)
+	if (load_map(game.map, av[1]) != 0)
+		return (cleanup_and_exit(&game, 1));
+	if (!find_exit(&game))
 		return (cleanup_and_exit(&game, 1));
 	if (!validate_map(&game))
 		return (cleanup_and_exit(&game, 1));
+	if (!(fl_line(&game) == 0))
+		return (printf("Error\n"), 1);
 	game.mlx_win = mlx_new_window(game.mlx, game.map->x * 30, game.map->y * 30,
 		"Plisse les yeux ou jtegoume");
 	if (!game.mlx_win)

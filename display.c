@@ -6,42 +6,41 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:33:42 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/12 16:15:55 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 17:26:27 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	assets_img(t_game *game)
+void	err_check(t_game *game)
 {
-	int	width = 30;
-	int	height = 30;
+	if (!game->img->img1 || !game->img->img2 || !game->img->img3
+		||!game->img->img4 || !game->img->img5 || !game->img->img6)
+		printf("Error\n");
+}
 
-	game->img->width = 30;
-	game->img->height = 30;
-	game->img->player1 = "assets/player1.xpm";
-	game->img->player2 = "assets/bg.xpm";
-	game->img->wall = "assets/wall.xpm";
-	game->img->collectibles = "assets/col.xpm";
-	game->img->fire = "assets/door.xpm";
-	game->img->player3 = "assets/pacman2.xpm";
+void	assets_img(t_game *g)
+{
+	int	w;
+	int	h;
 
-	game->img->img1 = mlx_xpm_file_to_image(game->mlx, game->img->player1,
-			&width, &height);
-	game->img->img2 = mlx_xpm_file_to_image(game->mlx, game->img->player2,
-			&width, &height);
-	game->img->img3 = mlx_xpm_file_to_image(game->mlx, game->img->wall,
-			&width, &height);
-	game->img->img4 = mlx_xpm_file_to_image(game->mlx, game->img->collectibles,
-			&width, &height);
-	game->img->img5 = mlx_xpm_file_to_image(game->mlx, game->img->fire,
-			&width, &height);
-	game->img->img6 = mlx_xpm_file_to_image(game->mlx, game->img->player3,
-			&width, &height);
-
-	if (!game->img->img1 || !game->img->img2 || !game->img->img3 ||
-		!game->img->img4 || !game->img->img5 || !game->img->img6)
-		printf("Erreur: Impossible de charger une ou plusieurs images\n");
+	h = 30;
+	w = 30;
+	g->img->width = 30;
+	g->img->height = 30;
+	g->img->player1 = "assets/player1.xpm";
+	g->img->player2 = "assets/bg.xpm";
+	g->img->wall = "assets/wall.xpm";
+	g->img->collectibles = "assets/col.xpm";
+	g->img->fire = "assets/door.xpm";
+	g->img->player3 = "assets/pacman2.xpm";
+	g->img->img1 = mlx_xpm_file_to_image(g->mlx, g->img->player1, &w, &h);
+	g->img->img2 = mlx_xpm_file_to_image(g->mlx, g->img->player2, &w, &h);
+	g->img->img3 = mlx_xpm_file_to_image(g->mlx, g->img->wall, &w, &h);
+	g->img->img4 = mlx_xpm_file_to_image(g->mlx, g->img->collectibles, &w, &h);
+	g->img->img5 = mlx_xpm_file_to_image(g->mlx, g->img->fire, &w, &h);
+	g->img->img6 = mlx_xpm_file_to_image(g->mlx, g->img->player3, &w, &h);
+	err_check(g);
 }
 
 void	destroy_img(t_game *game)
@@ -59,27 +58,3 @@ void	destroy_img(t_game *game)
 	if (game->img->img6)
 		mlx_destroy_image(game->mlx, game->img->img6);
 }
-
-/*void	display_img(t_game game)
-{
-	int	width;
-	int	height;
-
-	width = 30;
-	height = 30;
-	if (!game.img)
-		return ;
-	assets_img(game);
-	if (!game.img)
-	{
-		printf("erreur impossible d'afficher l'image : %s\n", game.img->player1);
-		printf("erreur impossible d'afficher l'image : %s\n", game.img->player2);
-		free(game.img);
-		return ;
-	}
-	mlx_put_image_to_window(game.mlx, game.mlx_win, game.img->img2, 50, 50);
-	mlx_put_image_to_window(game.mlx, game.mlx_win, game.img->img1, 200, 150);
-	mlx_put_image_to_window(game.mlx, game.mlx_win, game.img->img3, 100, 75);
-	mlx_put_image_to_window(game.mlx, game.mlx_win, game.img->img4, 0, 0);
-	destroy_img(game);
-}*/

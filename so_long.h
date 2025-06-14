@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/12 17:42:14 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/14 16:02:20 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ typedef struct	s_game
 	void	*mlx_win;
 	t_map	*map;
 	t_img	*img;
+	int	player_exit;
+	int	exit_x;
+	int	exit_y;
 }		t_game;
 
 int	t_strlen(char *str);
@@ -88,5 +91,8 @@ int	is_valid(t_game *game);
 void	flood_fill(char **map, int x, int y);
 int	count_elements(t_game *game);
 int	is_door_valid(t_game *game);
+int	find_exit(t_game *game);
+int	fl_line(t_game *game);
+void	calc_map_dimensions(t_map *map);
 
 #endif
