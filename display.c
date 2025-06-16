@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:33:42 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 18:05:38 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 21:33:02 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	err_check(t_game *game)
 {
 	if (!game->img->img1 || !game->img->img2 || !game->img->img3
-		||!game->img->img4 || !game->img->img5 || !game->img->img6)
+		|| !game->img->img4 || !game->img->img5 || !game->img->img6)
 	{
 		write(1, "Error\n", 6);
 		free_all(game);
@@ -67,3 +67,4 @@ void	destroy_img(t_game *game)
 	if (game->img->img6)
 		mlx_destroy_image(game->mlx, game->img->img6);
 }
+

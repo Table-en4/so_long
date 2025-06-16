@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:28:17 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 19:43:58 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 21:32:39 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	load_map(t_map *map, char *file)
 		return (1);
 	}
 	if (map->map[0])
-		map->x = t_strlen(map->map[0]);
+		map->x = ft_strlen(map->map[0]);
 	else
 		map->x = 0;
 	close(fd);

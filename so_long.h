@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 19:56:07 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 22:10:29 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,14 @@ int		cleanup_and_exit(t_game *game, int exit_code);
 void	init_game_struct(t_game *game);
 void	init_img_struct(t_img *img);
 int		validate_map(t_game *game);
+int		is_map_val(char **map);
+
+/* New validation functions */
+int		count_char_in_map(char **map, char c);
+int		check_single_player_and_exit(t_map *map);
+int		check_rectangular_map(t_map *map);
+int		check_valid_characters(t_map *map);
+int		check_map_min_size(t_map *map);
 int		is_map_surrounded_by_walls(char **map);
 
 #endif
