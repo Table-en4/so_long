@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:46:50 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 18:09:48 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:02:20 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void	display_move_counter(t_game *game, int moves)
 		free(move_count);
 		return ;
 	}
-	mlx_string_put(game->mlx, game->mlx_win, 10, 20, 0x000000, move_str);
-	printf("%s\n", move_str);
+	mlx_string_put(game->mlx, game->mlx_win, 10, 20, 0xFFFF, move_str);
+	ft_putstr("%s\n");
+	ft_putstr(move_str);
 	free(move_count);
 	free(move_str);
 }
@@ -63,13 +64,13 @@ int	handle_exit_move(t_game *g)
 {
 	if (is_door_valid(g) == 1)
 	{
-		printf("you win !!!\n");
+		ft_putstr("you win !!!\n");
 		free_all(g);
 		exit(0);
 	}
 	else
 	{
-		printf("get all collectibles before exit\n");
+		ft_putstr("get all collectibles before exit\n");
 		g->player_exit = 1;
 		return (1);
 	}
@@ -79,7 +80,7 @@ int	check_args_and_init(int ac, t_game *game)
 {
 	if (ac != 2)
 	{
-		printf("put map\n");
+		ft_putstr("Error\n");
 		return (1);
 	}
 	init_game_struct(game);
@@ -104,10 +105,11 @@ int	check_map_validity(t_game *game, char *file)
 		return (cleanup_and_exit(game, 1));
 	if (!validate_map(game))
 		return (cleanup_and_exit(game, 1));
-	if (fl_line(game) != 0)
+	if (!is_map_surrounded_by_walls(game->map->map))
 	{
-		printf("bad border map bro\n");
-		return (1);
+		ft_putstr_fd("Error\n", 2);
+		free_all(game);
+		exit(1);
 	}
 	return (0);
 }

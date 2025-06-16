@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: molapoug <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 10:30:53 by molapoug          #+#    #+#              #
-#    Updated: 2025/05/21 15:54:24 by molapoug         ###   ########.fr        #
+#    Updated: 2025/06/16 19:57:32 by molapoug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM = rm -f
 
 SRC = ft_printf.c ft_printf_px.c \
       ft_printf_unsigned.c ft_utils.c \
-      ft_print_str.c
+      ft_print_str.c	
 
 OBJ = $(SRC:.c=.o)
 

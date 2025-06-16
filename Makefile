@@ -6,7 +6,7 @@
 #    By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 10:15:52 by molapoug          #+#    #+#              #
-#    Updated: 2025/06/14 17:47:20 by molapoug         ###   ########.fr        #
+#    Updated: 2025/06/16 19:58:27 by molapoug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,4 +77,3 @@ bonus:
 	@echo "$(PURPLE)💡Bonus not implemented yet$(NC)"
 
 .PHONY: all clean fclean re bonus
-

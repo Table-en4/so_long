@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 18:09:21 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:56:07 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ int		cleanup_and_exit(t_game *game, int exit_code);
 void	init_game_struct(t_game *game);
 void	init_img_struct(t_img *img);
 int		validate_map(t_game *game);
+int		is_map_surrounded_by_walls(char **map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:50:08 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/14 17:57:17 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:48:27 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	move_player(t_game *g, int new_x, int new_y)
 		return (0);
 	if (g->map->map[new_y][new_x] == 'N')
 	{
-		printf("You lose !!!\nYou got eaten !!!\n");
+		ft_putstr("You lose !!!\n");
 		free_all(g);
 		exit(0);
 	}
