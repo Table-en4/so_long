@@ -6,11 +6,11 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:46:50 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 20:06:59 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:12:37 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long."
 
 int	free_all(t_game *game)
 {
