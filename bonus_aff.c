@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:46:50 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 20:02:20 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/16 20:06:59 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	display_move_counter(t_game *game, int moves)
 		return ;
 	}
 	mlx_string_put(game->mlx, game->mlx_win, 10, 20, 0xFFFF, move_str);
-	ft_putstr("%s\n");
 	ft_putstr(move_str);
+	ft_putstr("\n");
 	free(move_count);
 	free(move_str);
 }
