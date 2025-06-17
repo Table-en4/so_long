@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:46:50 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/17 11:55:05 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:24:34 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,7 @@ int	check_map_validity(t_game *game, char *file)
 	if (!min_map(game->map))
 		return (cleanup_and_exit(game, 1));
 	if (!is_one(game->map->map))
-	{
-		ft_putstr_fd("Error\n", 2);
 		return (cleanup_and_exit(game, 1));
-	}
 	if (!one_player(game->map))
 		return (cleanup_and_exit(game, 1));
 	if (!valid_elements(game->map))
