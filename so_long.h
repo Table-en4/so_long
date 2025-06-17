@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:05:47 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 22:10:29 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 09:30:14 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		is_door_valid(t_game *game);
 int		find_exit(t_game *game);
 int		fl_line(t_game *game);
 void	calc_map_dimensions(t_map *map);
-void	display_move_counter(t_game *game, int moves);
+void	display_mouve(t_game *game, int moves);
 int		handle_exit_move(t_game *g);
 int		check_args_and_init(int ac, t_game *game);
 int		check_map_validity(t_game *game, char *file);
@@ -112,10 +112,10 @@ int		is_map_val(char **map);
 
 /* New validation functions */
 int		count_char_in_map(char **map, char c);
-int		check_single_player_and_exit(t_map *map);
-int		check_rectangular_map(t_map *map);
-int		check_valid_characters(t_map *map);
-int		check_map_min_size(t_map *map);
-int		is_map_surrounded_by_walls(char **map);
+int		one_player(t_map *map);
+int		check_rec(t_map *map);
+int		valid_elements(t_map *map);
+int		min_map(t_map *map);
+int		is_one(char **map);
 
 #endif

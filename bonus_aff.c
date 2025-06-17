@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:46:50 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 22:29:02 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 09:30:14 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	free_all(t_game *game)
 	return (1);
 }
 
-void	display_move_counter(t_game *game, int moves)
+void	display_mouve(t_game *game, int moves)
 {
 	char	*move_count;
 	char	*move_str;
@@ -101,18 +101,18 @@ int	check_map_validity(t_game *game, char *file)
 {
 	if (load_map(game->map, file) != 0)
 		return (cleanup_and_exit(game, 1));
-	if (!check_rectangular_map(game->map))
+	if (!check_rec(game->map))
 		return (cleanup_and_exit(game, 1));
-	if (!check_map_min_size(game->map))
+	if (!min_map(game->map))
 		return (cleanup_and_exit(game, 1));
-	if (!is_map_surrounded_by_walls(game->map->map))
+	if (!is_one(game->map->map))
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (cleanup_and_exit(game, 1));
 	}
-	if (!check_single_player_and_exit(game->map))
+	if (!one_player(game->map))
 		return (cleanup_and_exit(game, 1));
-	if (!check_valid_characters(game->map))
+	if (!valid_elements(game->map))
 		return (cleanup_and_exit(game, 1));
 	if (!find_exit(game))
 		return (cleanup_and_exit(game, 1));

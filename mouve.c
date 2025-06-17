@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 18:50:08 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 19:48:27 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 09:25:43 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ int	handle_input(int keysym, t_game *game)
 		moves += move_player(game, x - 1, y);
 	else if (keysym == XK_D || keysym == XK_d || keysym == 65363)
 		moves += move_player(game, x + 1, y);
-	display_move_counter(game, moves);
+	display_mouve(game, moves);
 	return (1);
 }

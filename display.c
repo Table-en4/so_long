@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:33:42 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 21:33:02 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 09:31:17 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ void	destroy_img(t_game *game)
 	if (game->img->img6)
 		mlx_destroy_image(game->mlx, game->img->img6);
 }
-

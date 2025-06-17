@@ -34,7 +34,7 @@ int	count_char_in_map(char **map, char c)
 	return (count);
 }
 
-int	check_single_player_and_exit(t_map *map)
+int	one_player(t_map *map)
 {
 	int	player_count;
 	int	exit_count;
@@ -56,7 +56,7 @@ int	check_single_player_and_exit(t_map *map)
 	return (1);
 }
 
-int	check_rectangular_map(t_map *map)
+int	check_rec(t_map *map)
 {
 	int	i;
 	int	first_line_len;
@@ -81,7 +81,7 @@ int	check_rectangular_map(t_map *map)
 	return (1);
 }
 
-int	check_valid_characters(t_map *map)
+int	valid_elements(t_map *map)
 {
 	int	i;
 	int	j;
@@ -108,18 +108,18 @@ int	check_valid_characters(t_map *map)
 	return (1);
 }
 
-int	check_map_min_size(t_map *map)
+int	min_map(t_map *map)
 {
 	if (!map || !map->map)
 		return (0);
 	if (map->y < 3)
 	{
-		ft_putstr_fd("Error\nMap must have at least 3 rows\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	if (map->x < 3)
 	{
-		ft_putstr_fd("Error\nMap must have at least 3 columns\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	return (1);

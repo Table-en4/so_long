@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:27:57 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 22:13:27 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 09:29:27 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_first_and_last_columns(char **map, int height)
 	return (1);
 }
 
-int	is_map_surrounded_by_walls(char **map)
+int	is_one(char **map)
 {
 	int	height;
 
