@@ -6,12 +6,11 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 10:04:55 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/16 22:27:48 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:42:39 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "ft_printf/ft_printf.h"
 
 void	init_game_struct(t_game *game)
 {
