@@ -6,7 +6,7 @@
 /*   By: molapoug <molapoug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:46:50 by molapoug          #+#    #+#             */
-/*   Updated: 2025/06/17 09:30:14 by molapoug         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:55:05 by molapoug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	handle_exit_move(t_game *g)
 {
 	if (is_door_valid(g) == 1)
 	{
-		ft_putstr("you win !!!\n");
+		ft_putstr("\033[0;32myou win !!!\n\033[0m");
 		free_all(g);
 		exit(0);
 	}
